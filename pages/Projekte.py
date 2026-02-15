@@ -42,7 +42,7 @@ with col2:
     # Project 1
     st.markdown("""
     <div class='project-card'>
-        <div class='project-title'>MaStR-Analyse-Tool</div>
+        <div class='project-title'> 📊 MaStR-Analyse-Tool</div>
         <div class='project-desc'>
             Desktop-Anwendung zur Analyse des Marktstammdatenregisters mit 500.000+ Datensätzen. 
             Automatisierte CSV-Verarbeitung und interaktive Datenvisualisierung.
@@ -53,13 +53,13 @@ with col2:
         </div>
     </div>            
     """, unsafe_allow_html=True)
-    if st.button("📂 Zum Projekt",key="P1"):
+    if st.button("Zum Projekt",key="P1"):
         st.switch_page("pages/MaStR_Analyse_Tool.py") 
     
     # Project 2
     st.markdown("""
     <div class='project-card'>
-        <div class='project-title'>GameMovie_Website</div>
+        <div class='project-title'> 🌐 Gaming_Website</div>
         <div class='project-desc'>
             TEST.
         </div>
@@ -68,13 +68,13 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button("📂 Zum Projekt",key="P2"):
-        st.switch_page("pages/GameMovie_Website.py") 
+    if st.button("Zum Projekt",key="P2"):
+        st.switch_page("pages/Gaming_Website.py") 
 
     # Project 3
     st.markdown("""
     <div class='project-card'>
-        <div class='project-title'>Youtube-Analyse</div>
+        <div class='project-title'> ▶️ Youtube-Analyse</div>
         <div class='project-desc'>
             TEST.
         </div>
@@ -83,13 +83,13 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button("📂 Zum Projekt",key="P3"):
+    if st.button("Zum Projekt",key="P3"):
         st.switch_page("pages/Youtube_Analyse.py") 
 
     # Project 4
     st.markdown("""
     <div class='project-card'>
-        <div class='project-title'>Unreal Engine</div>
+        <div class='project-title'> 🎮 Unreal Engine</div>
         <div class='project-desc'>
             TEST.
         </div>
@@ -98,5 +98,5 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button("📂 Zum Projekt",key="P4"):
+    if st.button("Zum Projekt",key="P4"):
         st.switch_page("pages/Unreal_Engine.py") 
