@@ -9,7 +9,7 @@ st.write(Path(__file__).parent)
 BASE_DIR = Path(__file__).resolve().parent
 
 def load_css():
-    css_path = Path(__file__).resolve().parent.parent / "assets" / "Youtube_Analyse.css"
+    css_path = Path(__file__).resolve().parent.parent / "assets" / "streamlit_app_styles.css"
 
     if css_path.exists():
         with open(css_path, encoding="utf-8") as f:
@@ -31,3 +31,4 @@ with col2:
 
 with col3:
     st.page_link("pages/Feedback.py", label="📧 Feedback")
+
