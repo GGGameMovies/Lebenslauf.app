@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from pathlib import Path
 
+st.set_page_config(page_title="MaStR Analyse", layout="wide")
 # Custom CSS for dark modern design
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -17,8 +18,20 @@ def load_css():
 
 load_css()
 
-st.set_page_config(page_title="MaStR Analyse", layout="wide")
+# Header
+#Navi
+col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 
+with col2:
+    st.page_link("streamlit_app.py", label="🏠 Start")
+
+with col4:
+    st.page_link("pages/Projekte.py", label="📂 Projekte")
+
+with col6:
+    st.page_link("pages/Feedback.py", label="📧 Feedback")
+
+# Main content
 # =====================================================
 # Datenladen
 # =====================================================

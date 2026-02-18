@@ -52,74 +52,10 @@ with col2:
 
 
 # Main content
-col_left, col_right = st.columns([2, 1])
-
-# Projects Section
-with col_left:
-    st.markdown("## 🚀 Featured Projects")
-    
-    # Project 1
-    st.markdown("""
-    <div class='project-card'>
-        <div class='project-title'>MaStR-Analyse-Tool</div>
-        <div class='project-desc'>
-            Desktop-Anwendung zur Analyse des Marktstammdatenregisters mit 500.000+ Datensätzen. 
-            Automatisierte CSV-Verarbeitung und interaktive Datenvisualisierung.
-        </div>
-        <div class='tech-tags'>
-            <span class='tech-tag'>Python</span>
-            <span class='tech-tag'>Pandas</span>
-            <span class='tech-tag'>Tkinter</span>
-            <span class='tech-tag'>Data Viz</span>
-        </div>
-        <div class='impact-metric'>
-            <strong>Impact:</strong> Produktiv bei Stadt Leipzig • 80% Zeitersparnis
-        </div>
-    </div>            
-    """, unsafe_allow_html=True)
-    
-    # Project 2
-    st.markdown("""
-    <div class='project-card'>
-        <div class='project-title'>Buchungsanalyse-System</div>
-        <div class='project-desc'>
-            Automatisierte Auswertung von 12.000+ Raumbuchungen pro Jahr mit zeitbasierten Reports 
-            für strategische Planungsentscheidungen.
-        </div>
-        <div class='tech-tags'>
-            <span class='tech-tag'>Python</span>
-            <span class='tech-tag'>NumPy</span>
-            <span class='tech-tag'>Matplotlib</span>
-            <span class='tech-tag'>Analytics</span>
-        </div>
-        <div class='impact-metric'>
-            <strong>Impact:</strong> 15 Std./Woche Zeitersparnis für Verwaltungsteam
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Project 3
-    st.markdown("""
-    <div class='project-card'>
-        <div class='project-title'>IoT-Sensordaten-System</div>
-        <div class='project-desc'>
-            Datenbankentwicklung für IoT-Sensordaten zur Überwachung von Heizkörpern 
-            bei Stadtwerke Leipzig. SQL-Abfragen für Energie-Monitoring.
-        </div>
-        <div class='tech-tags'>
-            <span class='tech-tag'>SQL</span>
-            <span class='tech-tag'>MySQL</span>
-            <span class='tech-tag'>IoT</span>
-            <span class='tech-tag'>GitLab</span>
-        </div>
-        <div class='impact-metric'>
-            <strong>Impact:</strong> Echtzeit-Monitoring für Energieeffizienz
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+col1, col2, col3 = st.columns(3)
 
 # Skills Section
-with col_right:
+with col2:
     st.markdown("## 🎓 Ausbildung Timeline")
     
     timeline_data = [
