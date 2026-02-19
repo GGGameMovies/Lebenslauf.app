@@ -1,0 +1,57 @@
+body {
+    margin:0;
+    background:#050b2c;
+    color:white;
+    font-family:system-ui;
+}
+
+.slider {
+    width:100%;
+    height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.hero {
+    display:flex;
+    gap:3rem;
+    align-items:center;
+    padding:2rem 6vw;
+}
+
+.hero img {
+    width:35vw;
+    max-width:650px;
+    height:70vh;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.info {
+    max-width:40vw;
+}
+
+.rating {
+    font-size:1.5rem;
+    color:#4da3ff;
+}
+
+.thumbs {
+    display:flex;
+    gap:1rem;
+    padding-left:6vw;
+}
+
+.thumbs img {
+    width:120px;
+    height:170px;
+    object-fit:cover;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.thumbs img:hover {
+    transform:scale(1.08);
+}
