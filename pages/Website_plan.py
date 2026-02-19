@@ -121,12 +121,13 @@ st.divider()
 
 # =============================
 # CLICK BUTTONS
-st.markdown("## Teilprozesse anzeigen: klicken Sie auf die Buttons.")
+st.markdown("## Teilprozesse anzeigen:")
+st.markdown("Klicken Sie auf die Buttons.")
 
 c1,c2,c3,c4,c5 = st.columns(5)
 
 with c1:
-    st.button("📝 Register", on_click=select, args=("register",))
+    st.button("📝 Register/Loggin", on_click=select, args=("register",))
 
 with c2:
     st.button("🏠 Home", on_click=select, args=("Home",))
@@ -148,26 +149,53 @@ st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 if st.session_state.open_flow == "register":
     st.subheader("📝 Register Teilprozess")
 
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    Register_plan_image = BASE_DIR / "assets" / "Plaene" / "Register_plan.png"
+
     st.markdown("""
     <div class="subflow">
 
     <div class="flow-row">
-    <div class="box">registrieren / einloggen</div>
+    <div class="box">Einloggen</div>
     <div class="arrow">→</div>
-    <div class="box">Name & Email eintragen</div>
+    <div class="box">Zugangsdaten prüfen</div>
     <div class="arrow">→</div>
-    <div class="box">Verify-Code-Mail versenden/erhalten</div>
-    <div class="arrow">→</div>
-    <div class="box">Code Eingabe</div>
-    <div class="arrow">→</div>
-    <div class="box">Account aktiv</div>
+    <div class="box">Voller Zugriff</div>
     </div>
 
     </div>
     """, unsafe_allow_html=True)
 
+    st.markdown("""
+    <div class="subflow">
+
+    <div class="flow-row">
+    <div class="box">Registrieren</div>
+    <div class="arrow">→</div>
+    <div class="box">Nutzerdaten erfassen</div>
+    <div class="arrow">→</div>
+    <div class="box">Verify-Link versenden</div>
+    <div class="arrow">→</div>
+    <div class="box">Link bestätigen</div>
+    <div class="arrow">→</div>
+    <div class="box">Account aktiv</div>
+    <div class="arrow">→</div>
+    <div class="box">Voller Zugriff</div>
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    if Register_plan_image.exists():
+        st.image(Register_plan_image, use_container_width=True)
+    else:
+        st.error("Register Plan PNG nicht gefunden")
+
 elif st.session_state.open_flow == "Home":
     st.subheader("🏠 Home Teilprozess")
+
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    Home_plan_image = BASE_DIR / "assets" / "Plaene" / "Home_plan.png"
 
     st.markdown("""
     <div class="subflow">
@@ -183,8 +211,16 @@ elif st.session_state.open_flow == "Home":
     </div>
     """, unsafe_allow_html=True)
 
+    if Home_plan_image.exists():
+        st.image(Home_plan_image, use_container_width=True)
+    else:
+        st.error("Home Plan PNG nicht gefunden")
+
 elif st.session_state.open_flow == "vs":
     st.subheader("⚔ VS Teilprozess")
+
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    VS_plan_image = BASE_DIR / "assets" / "Plaene" / "VS_plan.png"
 
     st.markdown("""
     <div class="subflow">
@@ -196,15 +232,24 @@ elif st.session_state.open_flow == "vs":
     <div class="arrow">→</div>
     <div class="box">Spielwerte Vergleich</div>
     <div class="arrow">→</div>
+    <div class="box">Spiel wählen</div>
+    <div class="arrow">→</div>
     <div class="box">GamePage</div>
     </div>
 
     </div>
     """, unsafe_allow_html=True)
 
+    if VS_plan_image.exists():
+        st.image(VS_plan_image, use_container_width=True)
+    else:
+        st.error("VS Plan PNG nicht gefunden")
 
 elif st.session_state.open_flow == "favorite":
     st.subheader("❤️ Favorite Teilprozess")
+
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    Favorite_plan_image = BASE_DIR / "assets" / "Plaene" / "Favorite_plan.png"
 
     st.markdown("""
     <div class="subflow">
@@ -216,7 +261,7 @@ elif st.session_state.open_flow == "favorite":
     <div class="arrow">→</div>
     <div class="box">Tabelle filtern</div>
     <div class="arrow">→</div>
-    <div class="box">Spiel in Selectbox auswählen</div>
+    <div class="box">Spiel wählen</div>
     <div class="arrow">→</div>
     <div class="box">GamePage</div>
     </div>
@@ -224,9 +269,16 @@ elif st.session_state.open_flow == "favorite":
     </div>
     """, unsafe_allow_html=True)
 
+    if Favorite_plan_image.exists():
+        st.image(Favorite_plan_image, use_container_width=True)
+    else:
+        st.error("Favorite Plan PNG nicht gefunden")
 
 elif st.session_state.open_flow == "game":
     st.subheader("🎮 GamePage Teilprozess")
+
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    Gamepage_plan_image = BASE_DIR / "assets" / "Plaene" / "Gamepage_plan.png"
 
     st.markdown("""
     <div class="subflow">
@@ -243,3 +295,8 @@ elif st.session_state.open_flow == "game":
 
     </div>
     """, unsafe_allow_html=True)
+
+    if Gamepage_plan_image.exists():
+        st.image(Gamepage_plan_image, use_container_width=True)
+    else:
+        st.error("Gamepage Plan PNG nicht gefunden")
