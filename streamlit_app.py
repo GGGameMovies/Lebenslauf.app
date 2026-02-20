@@ -103,7 +103,7 @@ with col1:
     - Entwicklung Buchungsanalyse-Tool (Python) zur automatisierten Auswertung von Raumbuchungsdaten per CSV,
     - Analyse von internen & externen Nutzungsmustern für Büros,Büros, Ausstellungsräume & Veranstaltungsflächen
     
-    Technologie-Stack: VS Code, Jupiter, Python, Pandas, NumPy, Matplotlib, CSVVerarbeitung, Jira, Confluence
+    Technologie-Stack: VSC, Jupiter, Python, Jira, Confluence
     
     - Enge Abstimmung mit Projektleitung zur Anforderungsanalyse und Ergebnisvalidierung
     - Teilnahme an internen/externen Meetings und Workshops zur Projektkoordination
@@ -121,8 +121,8 @@ with col1:
 
     Vertieft:
                 
-    - Datenbanken und SQL - Grundlagen
-    - Programmiersprache C, C#, Java - Grundlagen
+    - Datenbanken und SQL
+    - Programmiersprache C, C#, Java
     - OOP mit MVC
                 
     Grundlagen:
@@ -144,7 +144,7 @@ with col1:
     - Implementierung von SQL-Abfragen zur Auswertung von Sensorwerten und Betriebsdaten
     - Einblick in IT-Sicherheitsstandards und organisatorische Abläufe der Energiewirtschaft
     
-    Technologie-Stack: SQL, GitLab, Scrum/Agile, Slack, VS Studio Code, Jira, Confluence
+    Technologie-Stack: SQL, Github, Scrum, Slack, VSC, Jira, Confluence
                 
     """)
 
