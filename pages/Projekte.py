@@ -5,6 +5,14 @@ from datetime import datetime
 from pathlib import Path
 st.write(Path(__file__).parent)
 
+# Page configuration
+st.set_page_config(
+    page_title="Daniel Gonzalez - Data Analytics Portfolio",
+    page_icon="🚀",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
 # Custom CSS for dark modern design
 BASE_DIR = Path(__file__).resolve().parent
 
