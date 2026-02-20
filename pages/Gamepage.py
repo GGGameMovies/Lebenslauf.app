@@ -9,10 +9,15 @@ DB_PATH = BASE_DIR / "assets" / "data" / "game.db"
 def db():
     return sqlite3.connect(DB_PATH)
 
-def img(path):
-    if not path:
+ROOT = Path(__file__).resolve().parents[1]   # Projektroot
+ASSETS = ROOT / "assets"
+BILDER = ASSETS / "bilder"
+
+def img(filename: str):
+    if not filename:
         return None
-    p = BASE_DIR / "assets" / path.lstrip("/")
+
+    p = BILDER / filename
     return p if p.exists() else None
 
 #Navi =====================
@@ -75,10 +80,11 @@ st.markdown("---")
 # =====================
 # Entwickler Kachel (Logo)
 
-def img(rel_path):
-    if not rel_path:
+def img(filename: str):
+    if not filename:
         return None
-    p = BASE_DIR / "assets" / rel_path.lstrip("/")
+
+    p = BILDER / filename
     return p if p.exists() else None
 
 st.markdown("""
