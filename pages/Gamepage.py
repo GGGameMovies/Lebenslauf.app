@@ -25,7 +25,7 @@ with col2:
     st.page_link("pages/Projekte.py", label="📂 Projekte")
 
 with col3:
-    st.page_link("pages/Feedback.py", label="📧 Feedback")
+    st.page_link("pages/Zeugnisse.py", label="📜 Zeugnisse")
 
 # =====================
 #Navi2 =====================

@@ -33,7 +33,7 @@ with col4:
     st.page_link("pages/Projekte.py", label="📂 Projekte")
 
 with col6:
-    st.page_link("pages/Feedback.py", label="📧 Feedback")
+    st.page_link("pages/Zeugnisse.py", label="📜 Zeugnisse")
 
 st.title("🧠 Prozessablauf")
 st.markdown("## Dies ist der Ablaufplan für das MaStR-Tool, wie es komplett aufgebaut wäre.")
