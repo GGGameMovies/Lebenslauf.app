@@ -18,8 +18,8 @@ def img(path):
     if not path:
         return None
 
-    path = path.lstrip("/")           # remove accidental leading slash
-    p = ASSETS / path                # expects: bilder/...
+    path = path.lstrip("/")
+    p = ASSETS / path
 
     return p if p.exists() else None
 
@@ -130,6 +130,8 @@ div[data-testid="stImage"] {
 # =====================
 # LOGO
 # =====================
+
+st.write("RAW logo aus DB:", repr(logo))
 
 logo_img = img(logo)
 
