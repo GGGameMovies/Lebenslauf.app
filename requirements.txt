@@ -2,3 +2,5 @@ streamlit
 plotly
 pandas
 numpy
+pdf2image
+pillow

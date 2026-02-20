@@ -1,36 +1,73 @@
 import streamlit as st
-import plotly.graph_objects as go
-import plotly.express as px
-from datetime import datetime
 from pathlib import Path
+import base64
 
-# Custom CSS for dark modern design
+# ----------------------------
+# Paths
+# ----------------------------
+
 BASE_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = BASE_DIR.parent / "assets"
-ZERTIFIKATE_DIR = ASSETS_DIR / "Zertifikat"
-ZEUGNISSE_DIR = ASSETS_DIR / "Arbeitszeugnis"
+
+ZERTIFIKATE_DIR = ASSETS_DIR / "Plaene" / "Zertifikat"
+ZEUGNISSE_DIR  = ASSETS_DIR / "Plaene" / "Arbeitszeugnis"
+
+CSS_PATH = ASSETS_DIR / "streamlit_app_styles.css"
+
+
+# ----------------------------
+# Load CSS
+# ----------------------------
 
 def load_css():
-    css_path = Path(__file__).resolve().parent.parent / "assets" / "streamlit_app_styles.css"
-
-    if css_path.exists():
-        with open(css_path, encoding="utf-8") as f:
+    if CSS_PATH.exists():
+        with open(CSS_PATH, encoding="utf-8") as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-    else:
-        st.error(f"CSS nicht gefunden: {css_path}")
 
 load_css()
 
-def load_files(folder: Path, extensions=("pdf", "png", "jpg", "jpeg")):
-    files = []
-    for ext in extensions:
-        files.extend(folder.glob(f"*.{ext}"))
-    return sorted(files)
 
-st.write(Path(__file__).parent)
+# ----------------------------
+# Helpers
+# ----------------------------
 
-# Header
-#Navi
+def load_pdfs(folder):
+    if not folder.exists():
+        return []
+    return sorted(folder.glob("*.pdf"))
+
+
+def pdf_card(file):
+    st.markdown(f"### 📄 {file.stem.replace('_',' ')}")
+
+    with open(file, "rb") as f:
+        st.download_button(
+            "⬇ Öffnen / Download",
+            f,
+            file_name=file.name,
+            mime="application/pdf",
+            use_container_width=True,
+        )
+
+    st.markdown("---")
+
+
+def show_grid(files, cols=3):
+    if not files:
+        st.info("Keine PDFs gefunden.")
+        return
+
+    columns = st.columns(cols)
+
+    for i, file in enumerate(files):
+        with columns[i % cols]:
+            pdf_card(file)
+
+
+# ----------------------------
+# Navigation
+# ----------------------------
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -42,40 +79,15 @@ with col2:
 with col3:
     st.page_link("pages/Zeugnisse.py", label="📜 Zeugnisse")
 
-st.header("📜 Praktikumszeugnisse")
 
-zeugnisse = load_files(ZEUGNISSE_DIR)
+# ----------------------------
+# Content
+# ----------------------------
 
-if not zeugnisse:
-    st.info("Keine Zeugnisse gefunden.")
-else:
-    for file in zeugnisse:
-        if file.suffix.lower() == ".pdf":
-            with open(file, "rb") as f:
-                st.download_button(
-                    label=f"📥 {file.stem}",
-                    data=f,
-                    file_name=file.name,
-                    mime="application/pdf"
-                )
-        else:
-            st.image(str(file), caption=file.stem, use_column_width=True)
+st.title("📜 Zeugnisse & Zertifikate")
 
-st.header("🏅 Zertifikate")
+st.subheader("🏫 Praktikumszeugnisse")
+show_grid(load_pdfs(ZEUGNISSE_DIR))
 
-zertifikate = load_files(ZERTIFIKATE_DIR)
-
-if not zertifikate:
-    st.info("Keine Zertifikate gefunden.")
-else:
-    for file in zertifikate:
-        if file.suffix.lower() == ".pdf":
-            with open(file, "rb") as f:
-                st.download_button(
-                    label=f"📥 {file.stem}",
-                    data=f,
-                    file_name=file.name,
-                    mime="application/pdf"
-                )
-        else:
-            st.image(str(file), caption=file.stem, use_column_width=True)
+st.subheader("🏅 Zertifikate")
+show_grid(load_pdfs(ZERTIFIKATE_DIR))
