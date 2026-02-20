@@ -57,7 +57,7 @@ with col_btn2:
         st.markdown("Geburtsdatum: 09.04.1988")
 
         BASE_DIR = Path(__file__).resolve().parent
-        Ich_image = BASE_DIR / "assets" / "Bilder" / "Ich.jpg"
+        Ich_image = BASE_DIR / "assets" / "bilder" / "Ich.jpg"
 
         if Ich_image.exists():
             st.image(Ich_image, width="stretch")
