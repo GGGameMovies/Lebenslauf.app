@@ -131,8 +131,6 @@ div[data-testid="stImage"] {
 # LOGO
 # =====================
 
-st.write("RAW logo aus DB:", repr(logo))
-
 logo_img = img(logo)
 
 if logo_img:
