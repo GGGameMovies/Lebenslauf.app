@@ -4,22 +4,25 @@ import plotly.express as px
 from pathlib import Path
 
 st.set_page_config(page_title="MaStR Analyse", layout="wide")
-# Custom CSS for dark modern design
+
+# =====================================================
+# CSS Laden
+# =====================================================
+
 BASE_DIR = Path(__file__).resolve().parent
 
 def load_css():
-    css_path = Path(__file__).resolve().parent.parent / "assets" / "streamlit_app_styles.css"
-
+    css_path = BASE_DIR.parent / "assets" / "streamlit_app_styles.css"
     if css_path.exists():
         with open(css_path, encoding="utf-8") as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-    else:
-        st.error(f"CSS nicht gefunden: {css_path}")
 
 load_css()
 
-# Header
-#Navi
+# =====================================================
+# Navigation
+# =====================================================
+
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 
 with col2:
@@ -31,12 +34,11 @@ with col4:
 with col6:
     st.page_link("pages/Zeugnisse.py", label="📜 Zeugnisse")
 
-# Main content
 # =====================================================
-# Datenladen
+# Daten laden
 # =====================================================
 
-DEFAULT_CSV = Path(__file__).resolve().parent.parent / "assets" / "data" / "mastr_default.csv"
+DEFAULT_CSV = BASE_DIR.parent / "assets" / "data" / "mastr_default.csv"
 
 @st.cache_data
 def load_csv(file):
@@ -49,7 +51,7 @@ def load_csv(file):
     )
 
 uploaded = st.file_uploader(
-    "Eigene MaStR CSV hochladen, nicht mehr aktuell, deshalb default CSV hinterlegt)",
+    "Eigene MaStR CSV hochladen (optional)",
     type="csv"
 )
 
@@ -64,7 +66,7 @@ else:
     st.stop()
 
 # =====================================================
-# Datenvorbereiten
+# Daten vorbereiten
 # =====================================================
 
 daten["Bruttoleistung der Einheit"] = pd.to_numeric(
@@ -80,10 +82,18 @@ daten["DatumAnalyse"] = pd.to_datetime(
 daten = daten.dropna(subset=["DatumAnalyse"])
 
 daten["Jahr"] = daten["DatumAnalyse"].dt.year
-daten["Monat"] = daten["DatumAnalyse"].dt.month_name(locale="de_DE")
+
+# 💡 Locale-sichere Monatsnamen (Cloud stabil)
+monate = {
+    1: "Januar", 2: "Februar", 3: "März", 4: "April",
+    5: "Mai", 6: "Juni", 7: "Juli", 8: "August",
+    9: "September", 10: "Oktober", 11: "November", 12: "Dezember"
+}
+
+daten["Monat"] = daten["DatumAnalyse"].dt.month.map(monate)
 
 # =====================================================
-# Datumsrange
+# Datumsrange bestimmen
 # =====================================================
 
 clean = daten.copy()
@@ -109,17 +119,14 @@ year_activity = year_activity[year_activity["Leistung"] > 1]
 min_year = int(year_activity["Jahr"].min())
 max_year = int(year_activity["Jahr"].max())
 
-display_min = min_year - 1   # = Gesamt
+display_min = min_year - 1
 display_max = max_year + 1
 
 # =====================================================
 # FILTER UI
 # =====================================================
 
-st.subheader("🔎 Filter ", help="""
-    Wenn Min & Max Jahre gewählt sind, wird der gesamte Zeitraum analysiert.
-    Wenn Filter auf 'Alle' stehen, werden Energieträger miteinander verglichen.
-    Wenn Filter ausgewählt sind, gibt es Jahreszeitstrahl.""") 
+st.subheader("🔎 Filter")
 
 c1, c2, c3, c4 = st.columns(4)
 
@@ -158,7 +165,7 @@ filter_gesetzt = energietraeger != "Alle" or status != "Alle"
 jahr_gesetzt = not (jahr_von == display_min and jahr_bis == display_max)
 
 # =====================================================
-# FILTER
+# FILTER anwenden
 # =====================================================
 
 filtered = daten.copy()
@@ -176,7 +183,7 @@ if status != "Alle":
     filtered = filtered[filtered["Betriebs-Status"] == status]
 
 # =====================================================
-# AGGREGATION
+# Aggregation
 # =====================================================
 
 if not filter_gesetzt and not jahr_gesetzt:
@@ -231,7 +238,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 # =====================================================
-# Ort
+# Herkunft
 # =====================================================
 
 st.subheader("📍 Herkunft der Anlagen")
@@ -243,7 +250,7 @@ for col in ["Ort", "Gemeinde", "Landkreis"]:
             st.write(f"**{col}:**", ", ".join(map(str, vals[:15])))
 
 # =====================================================
-# Sortierte Tabelle
+# Tabelle
 # =====================================================
 
 st.subheader("📊 Zeitliche Entwicklung je Energieträger")
@@ -256,7 +263,3 @@ trend_table = (
 )
 
 st.dataframe(trend_table, use_container_width=True)
-
-# =====================================================
-# Ergebnis 
-# =====================================================
