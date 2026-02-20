@@ -10,7 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = BASE_DIR.parent / "assets"
 
 ZERTIFIKATE_DIR = ASSETS_DIR / "Plaene" / "Zertifikat"
-ZEUGNISSE_DIR  = ASSETS_DIR / "Plaene" / "Arbeitszeugnis"
+ARBEITSZEUGNISSE_DIR  = ASSETS_DIR / "Plaene" / "Arbeitszeugnis"
+ZEUGNISSE_DIR  = ASSETS_DIR / "Plaene" / "Zeugnis"
 
 CSS_PATH = ASSETS_DIR / "streamlit_app_styles.css"
 
@@ -87,6 +88,9 @@ with col3:
 st.title("📜 Zeugnisse & Zertifikate")
 
 st.subheader("🏫 Praktikumszeugnisse")
+show_grid(load_pdfs(ARBEITSZEUGNISSE_DIR))
+
+st.subheader("🏫 Zeugnisse")
 show_grid(load_pdfs(ZEUGNISSE_DIR))
 
 st.subheader("🏅 Zertifikate")
