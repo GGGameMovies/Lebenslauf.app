@@ -3,19 +3,38 @@ import sqlite3
 from pathlib import Path
 
 # =====================
+# BASE PATHS
+# =====================
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / "assets" / "data" / "game.db"
+ASSETS = BASE_DIR / "assets"
+DB_PATH = ASSETS / "data" / "game.db"
 
 def db():
     return sqlite3.connect(DB_PATH)
 
+# Robust image loader (cloud safe)
 def img(path):
     if not path:
         return None
-    p = BASE_DIR / "assets" / path.lstrip("/")
+
+    path = path.lstrip("/")           # remove accidental leading slash
+    p = ASSETS / path                # expects: bilder/...
+
     return p if p.exists() else None
 
-#Navi =====================
+
+# =====================
+# PAGE CONFIG
+# =====================
+
+st.set_page_config(layout="wide")
+
+
+# =====================
+# NAVIGATION
+# =====================
+
 col5, col1, col6, col2, col7, col3, col4 = st.columns(7)
 
 with col1:
@@ -27,8 +46,7 @@ with col2:
 with col3:
     st.page_link("pages/Zeugnisse.py", label="📜 Zeugnisse")
 
-# =====================
-#Navi2 =====================
+
 col5, col1, col6, col2, col7 = st.columns(5)
 
 with col1:
@@ -37,14 +55,21 @@ with col1:
 with col2:
     st.page_link("pages/favorite.py", label="❤️ Favorite")
 
+
 # =====================
-st.set_page_config(layout="wide")
+# SESSION CHECK
+# =====================
 
 if "selected_game" not in st.session_state:
     st.warning("Kein Spiel ausgewählt.")
     st.stop()
 
 game = st.session_state["selected_game"]
+
+
+# =====================
+# DATABASE LOAD
+# =====================
 
 conn = db()
 
@@ -57,6 +82,8 @@ SELECT Beschreibung, Audio,
 FROM spiele WHERE SpielName=?
 """, (game,)).fetchone()
 
+conn.close()
+
 (
  desc, audio,
  ps, pc, xbox, nin,
@@ -65,19 +92,24 @@ FROM spiele WHERE SpielName=?
  creativity, immersion, sound, rating
 ) = row
 
+
 # =====================
+# HEADER
+# =====================
+
 st.title(game)
 st.caption(desc)
 st.write(f"🎧 Audio: {audio}")
 
 st.markdown("---")
 
+
 # =====================
-# Entwickler Kachel (Logo)
+# IMAGE STYLE
+# =====================
 
 st.markdown("""
 <style>
-/* Alle Streamlit Bilder stylen */
 div[data-testid="stImage"] img {
     width: 30%;
     border-radius: 16px;
@@ -85,8 +117,6 @@ div[data-testid="stImage"] img {
     display: block;
     margin: auto;
 }
-
-/* Optional Container Style */
 div[data-testid="stImage"] {
     background:#141a22;
     padding:24px;
@@ -97,18 +127,24 @@ div[data-testid="stImage"] {
 """, unsafe_allow_html=True)
 
 
+# =====================
+# LOGO
+# =====================
+
 logo_img = img(logo)
 
 if logo_img:
-    st.image(logo_img, use_container_width=True)
+    st.image(logo_img, width="stretch")
 else:
-    st.info("Kein Bild vorhanden")
+    st.info("Kein Logo vorhanden")
 
-st.markdown("</div>", unsafe_allow_html=True)
+
+st.markdown("---")
 
 
 # =====================
-# METRIC GRID 2x4
+# METRIC GRID
+# =====================
 
 labels = [
     "Gameplay","Graphic","Story","AI",
@@ -128,7 +164,6 @@ for i in range(8):
     with cols[i % 4]:
         st.markdown(f"""
         <div style="
-            width:30% !important;
             background:#141a22;
             padding:24px;
             border-radius:16px;
@@ -136,39 +171,43 @@ for i in range(8):
             margin-bottom:20px;
             box-shadow:0 0 18px rgba(0,0,0,.5);
         ">
-            <h3 style="margin-bottom:8px;">{labels[i]}</h3>
+            <h3>{labels[i]}</h3>
             <h1 style="color:#4adeff;font-size:48px">{values[i]}</h1>
         </div>
         """, unsafe_allow_html=True)
 
-st.markdown("---")
 
 # =====================
-# BUY PLATFORMS
-st.markdown("Kaufen auf:")
+# BUY LINKS
+# =====================
+
+st.markdown("---")
+st.markdown("### 🛒 Kaufen auf:")
+
 b1, b2, b3, b4 = st.columns(4)
 
-def shop(img_path, url, label):
-    with img_path:
-        if url:
-            if st.button(label):
-                st.markdown(f"[Weiter zu Shop]({url})")
-
 with b1:
-    if ps: st.link_button("PlayStation", ps)
+    if ps:
+        st.link_button("PlayStation", ps)
 
 with b2:
-    if pc: st.link_button("PC", pc)
+    if pc:
+        st.link_button("PC", pc)
 
 with b3:
-    if xbox: st.link_button("Xbox", xbox)
+    if xbox:
+        st.link_button("Xbox", xbox)
 
 with b4:
-    if nin: st.link_button("Nintendo", nin)
+    if nin:
+        st.link_button("Nintendo", nin)
+
+
+# =====================
+# BACK
+# =====================
 
 st.markdown("---")
 
 if st.button("⬅ Zurück zum Vergleich"):
     st.switch_page("pages/VS.py")
-
-conn.close()
