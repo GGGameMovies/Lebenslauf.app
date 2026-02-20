@@ -13,8 +13,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-
-
 # Custom CSS for dark modern design
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -51,6 +49,20 @@ with col2:
         "<div class='contact-info'>📧 Danielgonzalez1988@web.de | 📱 015252874894 | 📍 Leipzig, Deutschland</div>",
         unsafe_allow_html=True
     )
+
+col_btn1, col_btn2, col_btn3 = st.columns([1, 1, 1])
+
+with col_btn2:
+    with st.expander("Weitere Persönliche Daten"):
+        st.markdown("Geburtsdatum: 09.04.1988")
+
+        BASE_DIR = Path(__file__).resolve().parent
+        Ich_image = BASE_DIR / "assets" / "Bilder" / "Ich.jpg"
+
+        if Ich_image.exists():
+            st.image(Ich_image, width="stretch")
+        else:
+            st.error("Bild nicht gefunden")
 
 
 # Main content
