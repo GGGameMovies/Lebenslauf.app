@@ -39,7 +39,7 @@ with col2:
 with col3:
     st.page_link("pages/Zeugnisse.py", label="📜 Zeugnisse")
 
-st.markdown("<h1>DANIEL GONZALEZ</h1>", unsafe_allow_html=True)
+st.title("DANIEL GONZALEZ")
 st.markdown("<div class='subtitle'>Datenanalyst für Prozessoptimierung mit Entwickler-Mindset</div>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1, 2, 1])
@@ -70,8 +70,8 @@ col0, col1, col2,col4 = st.columns([1, 2, 2, 1])
 
 with col1:
     st.markdown("## 🎓 Ausbildung")
-    st.markdown("""
-##  Fachinformatiker für Daten- und Prozessanalyse
+    st.subheader("""
+    Fachinformatiker für Daten- und Prozessanalyse
     WBS Schulung, Leipzig, Deutschland
 
     Vertieft:
@@ -96,8 +96,8 @@ with col1:
     """)
 
     st.markdown("## 📋 Praktikum")
-    st.markdown("""
-##  Fachinformatiker für Daten- & Prozessanalyse
+    st.subheader("""
+    Datenanalyst
     Referat Digitale Stadt Leipzig, Leipzig, Deutschland
 
     - Entwicklung Buchungsanalyse-Tool (Python) zur automatisierten Auswertung von Raumbuchungsdaten per CSV,
@@ -115,8 +115,8 @@ with col1:
     """)
 
     st.markdown("## 🎓 Ausbildung")
-    st.markdown("""
-##  Fachinformatiker für Anwendungsentwicklung
+    st.subheader("""
+    Fachinformatiker für Anwendungsentwicklung
     Z&P Weiterbildung, Leipzig, Deutschland
 
     Vertieft:
@@ -136,8 +136,8 @@ with col1:
     """)   
 
     st.markdown("## 📋 Praktikum")
-    st.markdown("""
-##  Junior-Software Entwickler
+    st.subheader("""
+    Junior-Software Entwickler
     Stadtwerke Leipzig, Leipzig, Deutschland
 
     - Datenbankentwicklung & -verwaltung für IoT-Sensordaten (Heizkörper-Monitoring)
@@ -149,8 +149,8 @@ with col1:
     """)
 
     st.markdown("## 💼 Beruf")
-    st.markdown("""
-##  Privater Arbeitsvermittler
+    st.subheader("""
+    Privater Arbeitsvermittler
     AIW International, Leipzig, Deutschland
 
     - Kundenbetreuung und Vermittlung zwischen Arbeitnehmern und Arbeitgebern
