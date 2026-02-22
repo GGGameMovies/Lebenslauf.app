@@ -97,7 +97,7 @@ with col1:
 
     st.markdown("## 📋 Praktikum")
     st.subheader("""
-    Datenanalyst
+    Junior-Datenanalyst
     Referat Digitale Stadt Leipzig, Leipzig, Deutschland
 
     - Entwicklung Buchungsanalyse-Tool (Python) zur automatisierten Auswertung von Raumbuchungsdaten per CSV,
