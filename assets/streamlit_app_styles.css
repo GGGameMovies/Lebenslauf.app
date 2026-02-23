@@ -25,7 +25,7 @@
     }
     
     h3 {
-        color: #e5e7eb !important;
+        color: #ffffff !important;
         font-weight: 600 !important;
         text-align: center;
     }
@@ -41,7 +41,7 @@
 
     .subtitle {
         text-align: center;
-        color: #e5e7eb;
+        color: #ffffff;
         font-size: 1.3rem;
         font-family: 'JetBrains Mono', monospace;
         margin-bottom: 1rem;
@@ -50,7 +50,7 @@
     /* Contact info */
     .contact-info {
         text-align: center;
-        color: #e5e7eb;
+        color: #ffffff;
         font-size: 1rem;
         margin-bottom: 3rem;
     }
