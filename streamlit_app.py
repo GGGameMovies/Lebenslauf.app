@@ -100,8 +100,11 @@ with col1:
     Junior-Datenanalyst
     Referat Digitale Stadt Leipzig, Leipzig, Deutschland
 
-    - Entwicklung Buchungsanalyse-Tool (Python) zur automatisierten Auswertung von Raumbuchungsdaten per CSV,
-    - Analyse von internen & externen Nutzungsmustern für Büros,Büros, Ausstellungsräume & Veranstaltungsflächen
+    - Entwicklung MaStR-Dashboard-Analyse:  Desktop-Anwendung zur Analyse des Marktstammdatenregisters mit bis zu 100.000+ Datensätzen, zur Nachverfolgung des Zubau´s, 
+    nach Zeitraum & Energieträger. Automatisierte CSV-Verarbeitung und interaktive Datenvisualisierung.
+                 
+    - Entwicklung Buchungsanalyse-Tool (Python): zur automatisierten Auswertung von Raumbuchungsdaten per CSV,
+    Analyse von internen & externen Nutzungsmustern für Büros, Ausstellungsräume & Veranstaltungsflächen
     
     Technologie-Stack: VSC, Jupiter, Python, Jira, Confluence
     
