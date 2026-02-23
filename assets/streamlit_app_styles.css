@@ -7,6 +7,10 @@
         font-family: 'Outfit', sans-serif;
     }
     
+    .st-emotion-cache-2fgyt4 p, .st-emotion-cache-2fgyt4 ol, .st-emotion-cache-2fgyt4 ul, .st-emotion-cache-2fgyt4 dl, .st-emotion-cache-2fgyt4 li {
+        font-size: small;
+    }
+
     /* Headers */
     h1 {
         font-size: 4rem !important;
