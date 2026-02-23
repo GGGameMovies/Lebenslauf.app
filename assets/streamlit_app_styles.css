@@ -25,7 +25,7 @@
     }
     
     h3 {
-        color: #94a3b8 !important;
+        color: #e5e7eb !important;
         font-weight: 600 !important;
         text-align: center;
     }
@@ -33,7 +33,7 @@
     /* Subtitle */
     .st-emotion-cache-2fgyt4 h3 {
         text-align: justify;
-        color: #94a3b8;
+        color: e5e7eb;
         font-size: 1.3rem;
         font-family: 'JetBrains Mono', monospace;
         margin-bottom: 1rem;
@@ -41,7 +41,7 @@
 
     .subtitle {
         text-align: center;
-        color: #94a3b8;
+        color: #e5e7eb;
         font-size: 1.3rem;
         font-family: 'JetBrains Mono', monospace;
         margin-bottom: 1rem;
@@ -50,7 +50,7 @@
     /* Contact info */
     .contact-info {
         text-align: center;
-        color: #94a3b8;
+        color: #e5e7eb;
         font-size: 1rem;
         margin-bottom: 3rem;
     }
