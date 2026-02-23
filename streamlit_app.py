@@ -100,7 +100,7 @@ with col1:
     Junior-Datenanalyst
     Referat Digitale Stadt Leipzig, Leipzig, Deutschland
 
-    - Entwicklung MaStR-Dashboard-Analyse:  Desktop-Anwendung zur Analyse des Marktstammdatenregisters mit bis zu 100.000+ Datensätzen, zur Nachverfolgung des Zubau´s, 
+    - Entwicklung MaStR-Dashboard-Analyse (Python):  Desktop-Anwendung zur Analyse des Marktstammdatenregisters mit bis zu 100.000+ Datensätzen, zur Nachverfolgung des Zubau´s, 
     nach Zeitraum & Energieträger. Automatisierte CSV-Verarbeitung und interaktive Datenvisualisierung.
                  
     - Entwicklung Buchungsanalyse-Tool (Python): zur automatisierten Auswertung von Raumbuchungsdaten per CSV,
